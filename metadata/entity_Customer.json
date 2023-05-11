@@ -1,0 +1,35 @@
+{
+  "entity": {
+    "typeName": "hive_table",
+    "attributes": {
+      "name": "Customer",
+      "displayName": "Customer Entity",
+      "qualifiedName": "pyapacheatlas://democustomerentity01",
+      "userDescription": "test description Entity01"
+    }
+  },
+  "columns": [
+    {
+      "typeName": "hive_column",
+      "attributes": {
+        "userDescription": "Customer's name",
+        "qualifiedName": "pyapacheatlas://sample_tablepyapacheatlas_custom_type@name",
+        "displayName": null,
+        "type": "str",
+        "isNull": false,
+        "name": "Name"
+      }
+    },
+    {
+      "typeName": "hive_column",
+      "attributes": {
+        "userDescription": "Customer's address.",
+        "qualifiedName": "pyapacheatlas://sample_tablepyapacheatlas_custom_type@address",
+        "displayName": null,
+        "type": "str",
+        "isNull": false,
+        "name": "Address"
+      }
+    }
+  ]
+}
