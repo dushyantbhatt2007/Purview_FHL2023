@@ -1,0 +1,31 @@
+{
+  "sourceEntity": {
+    "name": "Customer",
+    "typeName": "hive_table",
+    "qualifiedName": "pyapacheatlas://democustomerentity01"
+  },
+  "targetEntity": {
+    "name": "Order",
+    "typeName": "hive_table",
+    "qualifiedName": "pyapacheatlas://demoOrderentity"
+  },
+  "process": {
+    "name": "CustomerETLProcess",
+    "typeName": "ProcessWithColumnMapping",
+    "qualifiedName": "pyapacheatlas://CustomerETLprocess"
+  },
+  "columnMappings": [
+    {
+      "ColumnMapping": [
+        {
+          "Source": "CustomerId",
+          "Sink": "CustId"
+        }
+      ],
+      "DatasetMapping": {
+        "Source": "pyapacheatlas://democustomerentity01",
+        "Sink": "pyapacheatlas://demoOrderentity"
+      }
+    }
+  ]
+}

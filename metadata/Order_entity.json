@@ -1,0 +1,35 @@
+{
+  "entity": {
+    "typeName": "hive_table",
+    "qualifiedName": "pyapacheatlas://demoOrderentity",
+    "attributes": {
+      "name": "Order",
+      "displayName": "Order Entity",
+      "userDescription": "This is Order entity"
+    }
+  },
+  "columns": [
+    {
+      "typeName": "hive_column",
+      "qualifiedName": "pyapacheatlas://demoOrderentity@OrderId",
+      "attributes": {
+        "userDescription": "Order Id",
+        "displayName": null,
+        "type": "int",
+        "isNull": false,
+        "name": "OrderId"
+      }
+    },
+    {
+      "typeName": "hive_column",
+      "qualifiedName": "pyapacheatlas://demoOrderentity@CustomerId",
+      "attributes": {
+        "userDescription": "Customer's Id",
+        "displayName": null,
+        "type": "str",
+        "isNull": false,
+        "name": "CustId"
+      }
+    }
+  ]
+}

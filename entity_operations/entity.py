@@ -1,5 +1,6 @@
 import json
 from pyapacheatlas.core import AtlasEntity, PurviewClient
+from pyapacheatlas.core.util import GuidTracker
 
 
 class Entity:
@@ -7,23 +8,23 @@ class Entity:
         self.client = client
 
     @staticmethod
-    def as_atlas_entity(json, guid) -> AtlasEntity:
+    def as_atlas_entity(entity_json, gt:GuidTracker) -> AtlasEntity:
         return AtlasEntity(
-            name=json['attributes']['name'],
-            typeName=json['typeName'],
-            qualified_name=json['attributes']['qualifiedName'],
-            description=json['attributes']['userDescription'],
-            guid=guid
+            name=entity_json['attributes']['name'],
+            typeName=entity_json['typeName'],
+            qualified_name=entity_json['qualifiedName'],
+            description=entity_json['attributes']['userDescription'],
+            guid=gt.get_guid()
         )
 
     @staticmethod
-    def as_atlas_entity_column(json, guid) -> AtlasEntity:
+    def as_atlas_entity_column(column_json, gt:GuidTracker) -> AtlasEntity:
         return AtlasEntity(
-            name=json["attributes"]["name"],
-            typeName=json["typeName"],
-            qualified_name=json["attributes"]["qualifiedName"],
-            attributes=json["attributes"],
-            guid=guid
+            name=column_json["attributes"]["name"],
+            typeName=column_json["typeName"],
+            qualified_name=column_json["qualifiedName"],
+            attributes=column_json["attributes"],
+            guid=gt.get_guid()
         )
 
     def create_or_update_entity(self, entity: AtlasEntity, columns: [AtlasEntity]):
@@ -35,8 +36,7 @@ class Entity:
         upload_results = self.client.upload_entities(
             batch=batch
         )
-
-        print(upload_results)
+        return upload_results
 
     def get_entity_by_guid(self, guid: str) -> None:
         if not guid:
@@ -78,6 +78,3 @@ class Entity:
 
         print(entities["entities"][0])
         return AtlasEntity.from_json(entities["entities"][0])
-
-
-
